@@ -46,7 +46,7 @@ public class CasAuthenticationMechanism implements AuthenticationMechanism {
 
   public static final String STATUS_COOKIE = "cas-status";
 
-  public static final int MAX_RETRIES = 2;
+  public static final int MAX_RETRIES = 10;
 
   
   

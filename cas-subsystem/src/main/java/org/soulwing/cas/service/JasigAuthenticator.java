@@ -81,7 +81,6 @@ public class JasigAuthenticator implements Authenticator, Serializable {
         appendPathToUrl(config.getServerUrl(), LOGIN_PATH),
         config.getProtocol().getServiceParameterName(),
         serviceUrl, config.isRenew(), false);
-    
     return loginUrl;
   }
 
@@ -187,6 +186,11 @@ public class JasigAuthenticator implements Authenticator, Serializable {
     sb.append(uri.getScheme());
     sb.append("://");
     sb.append(uri.getAuthority());
+
+    if(requestPath.contains("//")) {
+      String realPath = requestPath.substring(0, requestPath.indexOf("//"));
+      requestPath = realPath;
+    }
     sb.append(requestPath);
 
     queryString = QueryUtil.removeProtocolParameters(config.getProtocol(), 
